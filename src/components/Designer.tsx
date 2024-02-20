@@ -2,8 +2,15 @@
 
 import React from 'react'
 import DesignerSidebar from './DesignerSidebar'
-
+import {useDroppable} from '@dnd-kit/core'
 function Designer() {
+    const droppable = useDroppable({
+        id:"designer-drop-area",
+        data: {
+            isDesignerDropArea : true,
+        }
+    })
+
   return (
     <div className='w-full flex h-full'>
         <div className='p-4 w-full'>

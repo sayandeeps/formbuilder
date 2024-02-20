@@ -5,9 +5,11 @@ import PreviewDialogBtn from './PreviewDialogBtn'
 import SaveFormBtn from './SaveFormBtn'
 import PublishFormBtn from './PublishFormBtn'
 import Designer from './Designer'
+import { DndContext } from '@dnd-kit/core'
 
 function FormBuilder({form} : {form:Form}) {
   return (
+    <DndContext>
     <main className='flex flex-col w-full'>
         <nav className='flex justify-between border-b-2 p-4 gap-3 items-center'>
             <h2 className='truncate font-medium'>
@@ -28,6 +30,7 @@ function FormBuilder({form} : {form:Form}) {
             <Designer/>
         </div>
     </main>
+    </DndContext>
   )
 }
 
