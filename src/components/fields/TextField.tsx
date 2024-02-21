@@ -36,7 +36,7 @@ function DesignerComponent({elementInstance}:{elementInstance : FormElementInsta
   return (
     <div className="flex flex-col gap-2 w-full">
       <Label>
-        {label}
+        {label} {element.id}
         {required && "*"}
       </Label>
       <Input readOnly disabled placeholder={placeHolder} />
