@@ -59,7 +59,7 @@ function StatsCards(props: StatsCardProps) {
         icon={<LuView className="text-blue-600" />}
         helperText="All time form visits"
         value={data?.visits.toLocaleString() || ""}
-       loading={loading} 
+        loading={loading}
         className="shadow-md shadow-blue-600"
       />
 
