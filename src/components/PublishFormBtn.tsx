@@ -1,4 +1,4 @@
-import { PublishForm } from "@/actions/form";
+import { PublishForm, UpdateFormContent } from "@/actions/form";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { FaSpinner } from "react-icons/fa";
@@ -16,13 +16,34 @@ import {
 } from "./ui/alert-dialog";
 import { Button } from "./ui/button";
 import { toast } from "./ui/use-toast";
+import useDesigner from "./hooks/useDesigner";
 
 function PublishFormBtn({ id }: { id: number }) {
+  const { elements } = useDesigner();
+
   const [loading, startTransition] = useTransition();
   const router = useRouter();
 
+  const updateFormContent = async () => {
+    try {
+      const jsonElements = JSON.stringify(elements);
+      await UpdateFormContent(id, jsonElements);
+      toast({
+        title: "Success",
+        description: "Your form has been saved",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong",
+        variant: "destructive",
+      });
+    }
+  };
+
   async function publishForm() {
     try {
+      updateFormContent();
       await PublishForm(id);
       toast({
         title: "Success",
